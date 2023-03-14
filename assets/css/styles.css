@@ -1,0 +1,159 @@
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: url(../../assets/img/universidad-campus.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(5px);
+  }
+  
+  header {
+    background-color: #1f1f1f;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 50px auto 0;
+    padding: 1em;
+    background-color: #00000099;
+    border-radius: 10px;
+  }
+  
+  section {
+    margin-bottom: 2em;
+  }
+  
+  h2 {
+    color: #ffd900;
+    margin-top: 0;
+  }
+  
+  p {
+    line-height: 1.5;
+    color: #fff;
+  }
+  
+  pre {
+    background-color: #eee;
+    padding: 0.5em;
+    border-radius: 5px;
+  }
+
+  ul li {
+    color: #ccc;
+  }
+  
+  form {
+    margin-top: 1em;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #fff;
+  }
+  
+  input {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1em;
+  }
+  
+  button {
+    background-color: #1f1f1f;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+
+  #resultado {
+    color: #fff;
+    text-align: center;
+  }
+
+  #resultado p {
+    font-weight: bold;
+    padding: 1em;
+    background-color: #1f1f1f;
+    border-radius: 5px;
+  }
+
+  footer {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  footer #creatorName {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  footer #social-medias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+  }
+  
+  footer #social-medias ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+  }
+  
+  footer #social-medias ul li {
+    list-style: none;
+  }
+  
+  footer #social-medias ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  #resultado {
+    margin-top: 1em;
+    font-weight: bold;
+  }
+  
+  /* Estilos específicos para dispositivos móviles */
+  
+  @media only screen and (max-width: 600px) {
+    input {
+      max-width: none;
+    }
+  }
+  

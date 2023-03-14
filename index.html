@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ley de Coulomb</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <script src="./assets/js/coulomb.js" defer></script>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" sizes="180x180" href="./assets/img/escudo.png">
+  </head>
+  <body>
+    <header>
+      <h1>Ley de Coulomb</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Descripción</h2>
+        <p>
+          La ley de Coulomb describe la interacción entre dos cargas eléctricas.
+          La fuerza electrostática entre dos cargas es proporcional al producto
+          de las cargas e inversamente proporcional al cuadrado de la distancia
+          entre ellas.
+        </p>
+      </section>
+
+      <section>
+        <h2>Cálculo de la fuerza electrostática</h2>
+        <p>
+          Para calcular la fuerza electrostática entre dos cargas, podemos
+          utilizar la siguiente fórmula:
+        </p>
+        <pre>F = k * q1 * q2 / r^2</pre>
+        <p>Donde:</p>
+        <ul>
+          <li>F es la fuerza electrostática en newtons (N)</li>
+          <li>
+            k es la constante de Coulomb, cuyo valor es 8.99 x 10^9 N·m^2/C^2
+          </li>
+          <li>q1 y q2 son las cargas eléctricas en coulombs (C)</li>
+          <li>r es la distancia entre las cargas en metros (m)</li>
+        </ul>
+
+        <p>
+          Ingresa los valores de las cargas y la distancia para calcular la
+          fuerza electrostática:
+        </p>
+
+        <form>
+          <label for="q1">Carga de la primera partícula (C):</label>
+          <input type="number" step="0.0000001" id="q1" name="q1" /><br />
+
+          <label for="q2">Carga de la segunda partícula (C):</label>
+          <input type="number" step="0.0000001" id="q2" name="q2" /><br />
+
+          <label for="r">Distancia entre las partículas (m):</label>
+          <input type="number" step="0.0000001" id="r" name="r" /><br />
+
+          <button type="button" id="calcular">
+            Calcular fuerza
+          </button>
+        </form>
+
+        <div id="resultado"></div>
+
+        <script src="coulomb.js"></script>
+      </section>
+    </main>
+
+    <footer>
+        <div id="creatorName">
+          By Brayan Rodallega
+        </div>
+        <div id="social-medias">
+          <ul>
+            <li>
+              <a href="https://github.com/brayanrodallega">
+                <img src="./assets/img/github.png" alt="github" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/brayanrodallega/">
+                <img src="./assets/img/linkedin.png" alt="linkedin" />
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/brayan1a1">
+                <img src="./assets/img/twitter.png" alt="twitter" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@Brayan1a1">
+                <img src="./assets/img/youtube.png" alt="youtube" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+  </body>
+</html>
