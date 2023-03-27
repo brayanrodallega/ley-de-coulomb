@@ -8,7 +8,6 @@ let selectScale1f = document.getElementById("scale1f");
 let selectScale2f = document.getElementById("scale2f");
 let selectScale3f = document.getElementById("scale3f");
 let calculateN = document.getElementById("calculateN");
-let resultf = document.getElementById("result");
 
 // Obtener referencias a los elementos del DOM (Form Distance)
 let formCalculateDistance = document.getElementById("formDistance");
@@ -20,7 +19,6 @@ let selectScale1d = document.getElementById("scale1d");
 let selectScale2d = document.getElementById("scale2d");
 let selectScale4d = document.getElementById("scale4d");
 let calculateD = document.getElementById("calculateD");
-let resultd = document.getElementById("resultd");
 
 
 // Obtener referencias a los elementos del DOM (Form Charge)
@@ -31,7 +29,20 @@ let inputForcec = document.getElementById("fc");
 let selectScale3c = document.getElementById("scale3c");
 let selectScale4c = document.getElementById("scale4c");
 let calculateQ = document.getElementById("calculateQ");
-let resultc = document.getElementById("resultc");
+
+// Obtener referencias a los elementos del DOM (Form Charge Different)
+let formCalculateChargeDifferent = document.getElementById("formChargeDifferent");
+let btnChargeDifferent = document.getElementById("btnChargeDifferent");
+let inputQ1cd = document.getElementById("q1cd");
+let inputDistancecd = document.getElementById("rcd");
+let inputForcecd = document.getElementById("fcd");
+let selectScale1cd = document.getElementById("scale1cd");
+let selectScale3cd = document.getElementById("scale3cd");
+let selectScale4cd = document.getElementById("scale4cd");
+let calculateQd = document.getElementById("calculateQD");
+
+// Obtener referencias a los elementos del DOM (Result)
+let result = document.getElementById("result");
 
 // Función para calcular la fuerza eléctrica
 function calculateForce() {
@@ -81,7 +92,7 @@ function calculateDistance() {
   result.appendChild(p);
 }
 
-// Función para calcular la carga
+// Función para calcular la cargas eléctricas iguales
 function calculateCharge() {
   // Obtener los valores de la distancia y la fuerza
   const distance = parseFloat(inputDistancec.value) * parseFloat(selectScale3c.value);
@@ -95,7 +106,7 @@ function calculateCharge() {
 
   // Calcular la carga usando la Ley de Coulomb
   const constK = 9 * Math.pow(10, 9); // Constante de Coulomb
-  const charge = Math.sqrt((constK * (force / distance)));
+  const charge = Math.sqrt(((distance**2) * force) / constK);
 
   // Mostrar el resultado en la página
   const p = document.createElement("p");
@@ -104,23 +115,51 @@ function calculateCharge() {
   result.appendChild(p);
 }
 
+// Función para calcular la cargas eléctricas diferentes
+function calculateChargeDifferent() {
+  // Obtener los valores de la distancia y la fuerza
+  const q1cd = parseFloat(inputQ1cd.value) * parseFloat(selectScale1cd.value);
+  const distance = parseFloat(inputDistancecd.value) * parseFloat(selectScale3cd.value);
+  const force = parseFloat(inputForcecd.value) * parseFloat(selectScale4cd.value);
+
+  // Verificar que los valores sean válidos
+  if (isNaN(q1cd) || isNaN(distance) || isNaN(force)) {
+    alert("Por favor ingrese valores válidos");
+    return;
+  }
+  console.log(q1cd, distance, force);
+  // Calcular la carga usando la Ley de Coulomb
+  const constK = 9 * Math.pow(10, 9); // Constante de Coulomb
+  const charge = ((force * (distance**2)) / (constK * q1cd));
+
+  // Mostrar el resultado en la página
+  const p = document.createElement("p");
+  p.textContent = `La carga es de ${charge.toExponential(3)} C`;
+  result.innerHTML = "";
+  result.appendChild(p);
+}
+
+
 // Asignar el evento de clic al botón de cálculo
 calculateN.addEventListener("click", calculateForce);
 calculateD.addEventListener("click", calculateDistance);
 calculateQ.addEventListener("click", calculateCharge);
+calculateQd.addEventListener("click", calculateChargeDifferent);
 
 // Toggle para mostrar u ocultar el formulario
 btnForce.addEventListener("click", () => {
   formCalculateForce.classList.toggle("hidden");
   formCalculateDistance.classList.add("hidden");
   formCalculateCharge.classList.add("hidden");
+  formCalculateChargeDifferent.classList.add("hidden");
   clear();
 });
 
-btnDistance.addEventListener("click", () => {
+btnDistanced.addEventListener("click", () => {
   formCalculateDistance.classList.toggle("hidden");
   formCalculateForce.classList.add("hidden");
   formCalculateCharge.classList.add("hidden");
+  formCalculateChargeDifferent.classList.add("hidden");
   clear();
 });
 
@@ -128,6 +167,15 @@ btnCharge.addEventListener("click", () => {
   formCalculateCharge.classList.toggle("hidden");
   formCalculateForce.classList.add("hidden");
   formCalculateDistance.classList.add("hidden");
+  formCalculateChargeDifferent.classList.add("hidden");
+  clear();
+});
+
+btnChargeDifferent.addEventListener("click", () => {
+  formCalculateChargeDifferent.classList.toggle("hidden");
+  formCalculateForce.classList.add("hidden");
+  formCalculateDistance.classList.add("hidden");
+  formCalculateCharge.classList.add("hidden");
   clear();
 });
 
@@ -146,13 +194,16 @@ function clear() {
   selectScale1d.value = "1";
   selectScale2d.value = "1";
   selectScale4d.value = "1";
-  resultf.innerHTML = "";
 
   inputDistancec.value = "";
   inputForcec.value = "";
   selectScale3c.value = "1";
   selectScale4c.value = "1";
-  resultd.innerHTML = "";
 
-  resultc.innerHTML = "";
+  inputQ1cd.value = "";
+  inputDistancecd.value = "";
+  inputForcecd.value = "";
+  selectScale1cd.value = "1";
+  selectScale3cd.value = "1";
+  selectScale4cd.value = "1";
 }

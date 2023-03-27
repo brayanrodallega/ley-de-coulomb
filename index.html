@@ -45,7 +45,8 @@
         <div class="container-toggle">
           <button type="button" id="btnForce">Fuerza electrostática</button>
           <button type="button" id="btnDistance">Distancia</button>
-          <button type="button" id="btnCharge">Carga</button>
+          <button type="button" id="btnCharge">Cargas identicas</button>
+          <button type="button" id="btnChargeDifferent">Cargas diferentes</button>
         </div>
 
         <form id="formForce" method="POST" class="hidden">
@@ -139,7 +140,7 @@
 
           <p>
             Ingresa los valores de la fuerza y la distancia para calcular la
-            carga de las partículas:
+            carga de las partículas (ten en cuenta que la carga de las partículas es igual):
           </p>
 
           <label for="fc">Fuerza electrostática:</label>
@@ -166,6 +167,49 @@
           </div>
 
           <button type="button" id="calculateQ">Calcular carga</button>
+        </form>
+
+        <form id="formChargeDifferent" method="POST" class="hidden">
+
+          <p>
+            Ingresa los valores de la carga, la fuerza y la distancia para calcular la carga de la segunda partícula: 
+          </p>
+          
+          <label for="q1cd">Carga de la primera partícula:</label>
+          <div class="container">
+            <input type="number" id="q1cd" name="q1cd" required /><br />
+            <select id="scale1cd" name="scale1cd">
+              <option value="1">Coulombs</option>
+              <option value="0.001">Milicoulombs</option>
+              <option value="0.000001">Microcoulombs</option>
+              <option value="0.000000001">Nanocoulombs</option>
+            </select>
+          </div>
+
+          <label for="fcd">Fuerza electrostática:</label>
+          <div class="container">
+            <input type="number" id="fcd" name="fcd" required /><br />
+            <select id="scale4cd" name="scale4cd">
+              <option value="1">Newtons</option>
+              <option value="0.001">Milinewtons</option>
+              <option value="0.000001">Micronewtons</option>
+              <option value="0.000000001">Nanonewtons</option>
+            </select>
+          </div>
+
+          <label for="rcd">Distancia entre las partículas:</label>
+          <div class="container">
+            <input type="number" id="rcd" name="rcd" required /><br />
+            <select id="scale3cd" name="scale3cd">
+              <option value="1">Metros</option>
+              <option value="0.01">Centímetros</option>
+              <option value="0.001">Milímetros</option>
+              <option value="0.000001">Micrómetros</option>
+              <option value="0.000000001">Nanómetros</option>
+            </select>
+          </div>
+
+          <button type="button" id="calculateQD">Calcular carga</button>
         </form>
 
         <div id="result"></div>
