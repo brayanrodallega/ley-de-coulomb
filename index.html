@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <script src="./assets/js/coulomb.js" defer></script>
     <!-- FAVICON -->
-    <link rel="shortcut icon" sizes="180x180" href="./assets/img/escudo.png">
+    <link rel="shortcut icon" sizes="180x180" href="./assets/img/escudo.png" />
   </head>
   <body>
     <header>
@@ -35,66 +35,170 @@
         <ul>
           <li>F es la fuerza electrostática en newtons (N)</li>
           <li>
-            k es la constante de Coulomb, cuyo valor es 8.99 x 10^9 N·m^2/C^2
+            k es la constante de Coulomb, cuyo valor es 9 x 10^9 N·m^2/C^2
           </li>
-          <li>q1 y q2 son las cargas eléctricas en coulombs (C)</li>
-          <li>r es la distancia entre las cargas en metros (m)</li>
+          <li>q1 y q2 son las cargas eléctricas</li>
+          <li>r es la distancia entre las cargas</li>
         </ul>
 
-        <p>
-          Ingresa los valores de las cargas y la distancia para calcular la
-          fuerza electrostática:
-        </p>
+        <p>¿Que deseas calcular?</p>
+        <div class="container-toggle">
+          <button type="button" id="btnForce">Fuerza electrostática</button>
+          <button type="button" id="btnDistance">Distancia</button>
+          <button type="button" id="btnCharge">Carga</button>
+        </div>
 
-        <form>
-          <label for="q1">Carga de la primera partícula (C):</label>
-          <input type="number" step="0.0000001" id="q1" name="q1" /><br />
+        <form id="formForce" method="POST" class="hidden">
 
-          <label for="q2">Carga de la segunda partícula (C):</label>
-          <input type="number" step="0.0000001" id="q2" name="q2" /><br />
+          <p>
+            Ingresa los valores de las cargas y la distancia para calcular la
+            fuerza electrostática:
+          </p>
 
-          <label for="r">Distancia entre las partículas (m):</label>
-          <input type="number" step="0.0000001" id="r" name="r" /><br />
+          <label for="q1f">Carga de la primera partícula:</label>
+          <div class="container">
+            <input type="number" id="q1f" name="q1f" required /><br />
+            <select id="scale1f" name="scale1f">
+              <option value="1">Coulombs</option>
+              <option value="0.001">Milicoulombs</option>
+              <option value="0.000001">Microcoulombs</option>
+              <option value="0.000000001">Nanocoulombs</option>
+            </select>
+          </div>
 
-          <button type="button" id="calcular">
-            Calcular fuerza
-          </button>
+          <label for="q2f">Carga de la segunda partícula:</label>
+          <div class="container">
+            <input type="number" id="q2f" name="q2f" required /><br />
+            <select id="scale2f" name="scale2f">
+              <option value="1">Coulombs</option>
+              <option value="0.001">Milicoulombs</option>
+              <option value="0.000001">Microcoulombs</option>
+              <option value="0.000000001">Nanocoulombs</option>
+            </select>
+          </div>
+
+          <label for="rf">Distancia entre las partículas:</label>
+          <div class="container">
+            <input type="number" id="rf" name="rf" required /><br />
+            <select id="scale3f" name="scale3f">
+              <option value="1">Metros</option>
+              <option value="0.01">Centímetros</option>
+              <option value="0.001">Milímetros</option>
+              <option value="0.000001">Micrómetros</option>
+              <option value="0.000000001">Nanómetros</option>
+            </select>
+          </div>
+
+          <button type="button" id="calculateN">Calcular fuerza</button>
         </form>
 
-        <div id="resultado"></div>
+        <form id="formDistance" method="POST" class="hidden">
 
-        <script src="coulomb.js"></script>
+          <p>
+            Ingresa los valores de las cargas y la fuerza para calcular la
+            distancia entre las partículas:
+          </p>
+
+          <label for="q1d">Carga de la primera partícula:</label>
+          <div class="container">
+            <input type="number" id="q1d" name="q1d" required /><br />
+            <select id="scale1d" name="scale1d">
+              <option value="1">Coulombs</option>
+              <option value="0.001">Milicoulombs</option>
+              <option value="0.000001">Microcoulombs</option>
+              <option value="0.000000001">Nanocoulombs</option>
+            </select>
+          </div>
+
+          <label for="q2d">Carga de la segunda partícula:</label>
+          <div class="container">
+            <input type="number" id="q2d" name="q2d" required /><br />
+            <select id="scale2d" name="scale2d">
+              <option value="1">Coulombs</option>
+              <option value="0.001">Milicoulombs</option>
+              <option value="0.000001">Microcoulombs</option>
+              <option value="0.000000001">Nanocoulombs</option>
+            </select>
+          </div>
+
+          <label for="fd">Fuerza electrostática:</label>
+          <div class="container">
+            <input type="number" id="fd" name="fd" required /><br />
+            <select id="scale4d" name="scale4d">
+              <option value="1">Newtons</option>
+              <option value="0.001">Milinewtons</option>
+              <option value="0.000001">Micronewtons</option>
+              <option value="0.000000001">Nanonewtons</option>
+            </select>
+          </div>
+
+          <button type="button" id="calculateD">Calcular distancia</button>
+        </form>
+
+        <form id="formCharge" method="POST" class="hidden">
+
+          <p>
+            Ingresa los valores de la fuerza y la distancia para calcular la
+            carga de las partículas:
+          </p>
+
+          <label for="fc">Fuerza electrostática:</label>
+          <div class="container">
+            <input type="number" id="fc" name="fc" required /><br />
+            <select id="scale4c" name="scale4c">
+              <option value="1">Newtons</option>
+              <option value="0.001">Milinewtons</option>
+              <option value="0.000001">Micronewtons</option>
+              <option value="0.000000001">Nanonewtons</option>
+            </select>
+          </div>
+
+          <label for="rc">Distancia entre las partículas:</label>
+          <div class="container">
+            <input type="number" id="rc" name="rc" required /><br />
+            <select id="scale3c" name="scale3c">
+              <option value="1">Metros</option>
+              <option value="0.01">Centímetros</option>
+              <option value="0.001">Milímetros</option>
+              <option value="0.000001">Micrómetros</option>
+              <option value="0.000000001">Nanómetros</option>
+            </select>
+          </div>
+
+          <button type="button" id="calculateQ">Calcular carga</button>
+        </form>
+
+        <div id="result"></div>
+
       </section>
     </main>
 
     <footer>
-        <div id="creatorName">
-          By Brayan Rodallega
-        </div>
-        <div id="social-medias">
-          <ul>
-            <li>
-              <a href="https://github.com/brayanrodallega">
-                <img src="./assets/img/github.png" alt="github" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/brayanrodallega/">
-                <img src="./assets/img/linkedin.png" alt="linkedin" />
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/brayan1a1">
-                <img src="./assets/img/twitter.png" alt="twitter" />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/@Brayan1a1">
-                <img src="./assets/img/youtube.png" alt="youtube" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
+      <div id="creatorName">By Brayan Rodallega</div>
+      <div id="social-medias">
+        <ul>
+          <li>
+            <a href="https://github.com/brayanrodallega">
+              <img src="./assets/img/github.png" alt="github" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/brayanrodallega/">
+              <img src="./assets/img/linkedin.png" alt="linkedin" />
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/brayan1a1">
+              <img src="./assets/img/twitter.png" alt="twitter" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@Brayan1a1">
+              <img src="./assets/img/youtube.png" alt="youtube" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>
